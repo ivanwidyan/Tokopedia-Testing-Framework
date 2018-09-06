@@ -1,26 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="PR_IT_001" thread-count="1" parallel="false">
-    <test name="PR_IT_001 Purchase item test">
+<suite name="PR_IT Purchase item suite tests" thread-count="2" parallel="tests">
 
-        <parameter name="platform" value="web" />
+    <test enabled="true" name="PR_IT_001 Purchase sepatu futsal with order by Harga Tertinggi" >
+
+        <parameter name="platform" value="android" />
 
         <classes>
-            <class name="com.testing.tokopedia.SetUp"/>
+            <class name="com.testing.SetUp"/>
+            <class name="com.testing.tokopedia.SplashScreen"/>
             <class name="com.testing.tokopedia.Home">
                 <methods>
                     <include name="Search">
-                        <parameter name = "input" value="baju muslim wanita"/>
+                        <parameter name = "input" value="sepatu futsal" />
                     </include>
                 </methods>
             </class>
             <class name="com.testing.tokopedia.Search">
                 <methods>
-                    <include name = "Sort" >
-                        <parameter name = "input" value="produk terpopuler"/>
+                    <include name = "OrderBy">
+                        <parameter name = "input" value="Harga Tertinggi"/>
+                    </include>
+                    <include name = "Select" />
+                </methods>
+            </class>
+            <class name="com.testing.tokopedia.Summary" />
+        </classes>
+    </test>
+
+    <test enabled="true" name="PR_IT_002 Purchase sepatu futsal with order by Harga Tertinggi" >
+
+        <parameter name="platform" value="web" />
+
+        <classes>
+            <class name="com.testing.SetUp"/>
+            <class name="com.testing.tokopedia.SplashScreen"/>
+            <class name="com.testing.tokopedia.Home">
+                <methods>
+                    <include name="Search">
+                        <parameter name = "input" value="baju futsal" />
                     </include>
                 </methods>
             </class>
+            <class name="com.testing.tokopedia.Search">
+                <methods>
+                    <include name = "OrderBy">
+                        <parameter name = "input" value="Harga Terendah"/>
+                    </include>
+                    <include name = "Select" />
+                </methods>
+            </class>
+            <class name="com.testing.tokopedia.Summary" />
         </classes>
     </test>
 

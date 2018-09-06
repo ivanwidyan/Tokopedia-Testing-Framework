@@ -19,6 +19,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -145,6 +146,31 @@ public class Utility {
     }
 
     /**
+     * This method used to get element by css selector without element with default timeout
+     * @param driver
+     * @param param
+     * @param value
+     * @return WebElement
+     */
+    public static WebElement GetElementByCssSelector (WebDriver driver, String param, String value) {
+        return GetElementByCssSelector(driver, Constants.EMPTY, param, value);
+    }
+
+    /**
+     * This method used to get element by css selector with default timeout
+     * @param driver
+     * @param element or tag
+     * @param param
+     * @param value
+     * @return WebElement
+     */
+    public static WebElement GetElementByCssSelector (WebDriver driver, String element, String param, String value) {
+        String cssSelector = element + "[" + param + "='" + value + "']";
+        return webElementUtility(driver, cssSelector, ElementConstants.FIND_ELEMENT_TYPE_CSSSELECTOR,
+                CLICK_FALSE, NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
      * This method used to get element by css selector without element and click with default timeout
      * @param driver
      * @param param
@@ -210,8 +236,11 @@ public class Utility {
                 return null;
             } else {
 
-                if (click)
+                if (click) {
                     webElement.click();
+                    /*Actions actions = new Actions(driver);
+                    actions.moveToElement(webElement).click().perform();*/
+                }
 
                 if (sendKeys != null)
                     webElement.sendKeys(sendKeys);
@@ -234,18 +263,22 @@ public class Utility {
         try {
             if (type.equals(ElementConstants.FIND_ELEMENT_TYPE_ID)) {
                 wait.until(ExpectedConditions.elementToBeClickable(By.id(input)));
+//                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(input)));
                 webElement = driver.findElement(By.id(input));
 
             } else if (type.equals(ElementConstants.FIND_ELEMENT_TYPE_CLASSNAME)) {
                 wait.until(ExpectedConditions.elementToBeClickable(By.className(input)));
+//                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className(input)));
                 webElement = driver.findElement(By.className(input));
 
             } else if (type.equals(ElementConstants.FIND_ELEMENT_TYPE_XPATH)) {
                 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(input)));
+//                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(input)));
                 webElement = driver.findElement(By.xpath(input));
 
             } else if (type.equals(ElementConstants.FIND_ELEMENT_TYPE_CSSSELECTOR)) {
                 wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(input)));
+//                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(input)));
                 webElement = driver.findElement(By.cssSelector(input));
 
             } else {

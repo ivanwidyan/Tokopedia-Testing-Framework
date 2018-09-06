@@ -5,9 +5,8 @@
  * Email: ivanwidyan@yahoo.com
  */
 
-package com.testing.tokopedia;
+package com.testing;
 
-import com.testing.Handler;
 import com.testing.constants.ConfigConstants;
 import com.testing.logging.Log;
 import com.testing.tokopedia.constants.TokopediaConfigConstants;
@@ -35,19 +34,26 @@ public class SetUp {
 
         String info = "";
 
-        Log.Error("Test " + platform);
+        Log.Debug("Test platform: " + platform);
 
-        if (platform.equalsIgnoreCase("android")) {
+        if (platform.equalsIgnoreCase(ConfigConstants.PLATFORM_ANDROID)) {
             if (com.testing.Handler.GetCurrentAppiumDriver() == null) {
                 if (devicename == null)
                     devicename = TokopediaConfigConstants.DEVICE_NAME;
 
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setCapability(ConfigConstants.CAPABILITIES_DEVICE_NAME, devicename);
-                capabilities.setCapability(CapabilityType.BROWSER_NAME, TokopediaConfigConstants.BROWSER_NAME);
-                capabilities.setCapability(ConfigConstants.CAPABILITIES_PLATFORM_NAME, TokopediaConfigConstants.PLATFORM_NAME);
-                capabilities.setCapability(ConfigConstants.CAPABILITIES_APP_PACKAGE, TokopediaConfigConstants.APP_PACKAGE);
-                capabilities.setCapability(ConfigConstants.CAPABILITIES_APP_ACTIVITY, TokopediaConfigConstants.APP_ACTIVITY);
+                capabilities.setCapability(CapabilityType.BROWSER_NAME,
+                        TokopediaConfigConstants.BROWSER_NAME);
+
+                capabilities.setCapability(ConfigConstants.CAPABILITIES_PLATFORM_NAME,
+                        TokopediaConfigConstants.PLATFORM_NAME);
+
+                capabilities.setCapability(ConfigConstants.CAPABILITIES_APP_PACKAGE,
+                        TokopediaConfigConstants.APP_PACKAGE);
+
+                capabilities.setCapability(ConfigConstants.CAPABILITIES_APP_ACTIVITY,
+                        TokopediaConfigConstants.APP_ACTIVITY);
 
                 if (udid != null)
                     capabilities.setCapability(ConfigConstants.CAPABILITIES_UDID, udid);
@@ -69,15 +75,16 @@ public class SetUp {
                 info = "Duplicate Appium driver in the same thread";
                 Log.Error(info);
             }
-        } else if (platform.equalsIgnoreCase("web")) {
-//            System.setProperty("webdriver.gecko.driver", "/Users/ivanwidyan/Desktop/Ivan-Widyan/Tools/GeckoDriver/geckodriver");
-            System.setProperty("webdriver.gecko.driver", "/lib/geckodriver-v0.21.0/geckodriver.exe");
+
+        } else if (platform.equalsIgnoreCase(ConfigConstants.PLATFORM_WEB)) {
+            System.setProperty(ConfigConstants.GECKO_DRIVER_PROPERTY,
+                    ConfigConstants.GECKO_DRIVER_PATH);
             Handler.SetCurrentWebDriver(new FirefoxDriver());
 
-            Handler.GetCurrentWebDriver().manage().timeouts().implicitlyWait(ConfigConstants.DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+            Handler.GetCurrentWebDriver().manage().timeouts().implicitlyWait(
+                    ConfigConstants.DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
             String url = "https://www.tokopedia.com";
-
             Handler.GetCurrentWebDriver().get(url);
         }
     }

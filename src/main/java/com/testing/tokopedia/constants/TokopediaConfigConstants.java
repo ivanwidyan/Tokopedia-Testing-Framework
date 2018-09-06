@@ -8,14 +8,17 @@
 package com.testing.tokopedia.constants;
 
 public class TokopediaConfigConstants {
-    // Capabilities Set up
+    // Android Set up
     public final static String DEVICE_NAME = "emulator";
     public final static String BROWSER_NAME = "Android";
     public final static String PLATFORM_NAME = "Android";
-    public final static String APP_PACKAGE = "com.tokopedia.android";
-    public final static String APP_ACTIVITY = "com.tokopedia.android.appentry.splash.SplashActivity";
+    public final static String APP_PACKAGE = "com.tokopedia.tkpd";
+    public final static String APP_ACTIVITY = "com.tokopedia.tkpd.ConsumerSplashScreen";
     public final static String DEFAULT_IP = "127.0.0.1";
     public final static String DEFAULT_PORT = "4723";
+
+    // Web Set up
+    public final static String URL = "https://www.tokopedia.com";
 
     public final static String DEFAULT_FULLNAME = "Ivan Widyan";
     public final static String DEFAULT_MOBILENUMBER = "82140617776";
@@ -23,5 +26,5 @@ public class TokopediaConfigConstants {
     public final static String ANDROID_DEFAULT_TITLE = "Mr.";
     public final static String WEB_DEFAULT_TITLE = "MR";
 
-    public final static long TOOLTIP_TIMEOUT = 30;
+    public final static long TOOLTIP_TIMEOUT = 15;
 }
