@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="PR_IT Purchase item suite tests" thread-count="2" parallel="tests">
 
-    <test enabled="true" name="PR_IT_001 Purchase sepatu futsal with order by Harga Tertinggi" >
+    <test enabled="true" name="PR_IT_001 Purchase sepatu futsal with order by Harga Tertinggi in android" >
 
         <parameter name="platform" value="android" />
 
@@ -28,7 +28,7 @@
         </classes>
     </test>
 
-    <test enabled="true" name="PR_IT_002 Purchase sepatu futsal with order by Harga Tertinggi" >
+    <test enabled="true" name="PR_IT_002 Purchase sepatu futsal with order by Harga Tertinggi in web" >
 
         <parameter name="platform" value="web" />
 

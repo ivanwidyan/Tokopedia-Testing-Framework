@@ -25,7 +25,7 @@ Included in `pom.xml` for maven dependency
 * Android
 * Web Application
 
-### API Features
+### Framework Features
 * Wait Get Element By ID, ClassName, XPath, CSSSelector
 * Wait for Click Element By ID, ClassName, XPath, CSSSelector
 * Wait to Send Keys Element By ID, ClassName, XPath, CSSSelector
@@ -56,7 +56,7 @@ Included in `pom.xml` for maven dependency
 * Buy
 
 ### Examples
-**Flight Purchase:**
+**Item Purchase:**
 * Multiplatform Parallel Execution and Multithreading - Test PR_IT_001 & PR_IT_002
 [![Parallel_Test](https://user-images.githubusercontent.com/12959761/45136116-de8c9500-b1cc-11e8-91dc-2e5878119488.png)](https://youtu.be/msIWDudQ6Ew)
 
