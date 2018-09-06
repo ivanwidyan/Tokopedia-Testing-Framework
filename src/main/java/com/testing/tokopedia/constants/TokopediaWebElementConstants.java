@@ -12,6 +12,8 @@ public class TokopediaWebElementConstants {
     public final static String SEARCH_KEYWORD = "search-keyword";
     public final static String SEARCH_NEW_BUTTON = "btn new-btn-search";
 
+    public final static String HOME_LOGIN = "login-ddl-link";
+
     // Order By
     public final static String ORDER_BY = "_1AWTD5S4";
     public final static String ORDER_BY_PALING_SESUAI = "23";
@@ -34,9 +36,10 @@ public class TokopediaWebElementConstants {
     public final static String SUMMARY_BUY_BUTTON = "rvm-button--buy";
 
     // Search
-    public final static String SEARCH_ITEM_NAME ="ta-product-meta__name ta-ellipsis";
-    public final static String SEARCH_ITEM_PRICE = "ta-product-meta__price";
-    public final static String SEARCH_ITEM_RATING = "class ta-product-meta__rating";
+    public final static String SEARCH_ITEM_NAME = "_18f-69Qp";
+    public final static String SEARCH_TOPADS_ITEM_NAME ="ta-product-meta__name ta-ellipsis";
+    public final static String SEARCH_TOPADS_ITEM_PRICE = "ta-product-meta__price";
+    public final static String SEARCH_TOPADS_ITEM_RATING = "class ta-product-meta__rating";
 
 }
 

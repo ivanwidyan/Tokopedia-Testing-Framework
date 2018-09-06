@@ -43,8 +43,8 @@ public class SetUp {
 
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setCapability(ConfigConstants.CAPABILITIES_DEVICE_NAME, devicename);
-                capabilities.setCapability(CapabilityType.BROWSER_NAME,
-                        TokopediaConfigConstants.BROWSER_NAME);
+                /*capabilities.setCapability(CapabilityType.BROWSER_NAME,
+                        TokopediaConfigConstants.BROWSER_NAME);*/
 
                 capabilities.setCapability(ConfigConstants.CAPABILITIES_PLATFORM_NAME,
                         TokopediaConfigConstants.PLATFORM_NAME);

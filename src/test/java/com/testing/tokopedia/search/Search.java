@@ -5,7 +5,7 @@
  * Email: ivanwidyan@yahoo.com
  */
 
-package com.testing.tokopedia;
+package com.testing.tokopedia.search;
 
 import com.testing.Handler;
 import com.testing.Utility;
@@ -74,20 +74,22 @@ public class Search {
             else
                 Log.Error("Sort option " + option + " is not available");
 
-            try {
-                Utility.ClickElementByCssSelector(
-                        Handler.GetCurrentWebDriver(),
-                        WebElementConstants.CLASS_OPTION,
-                        WebElementConstants.PARAM_VALUE,
-                        option);
-            } catch (Exception e) {
-                Log.Error("Error: " + e);
-            }
+            Utility.ClickElementByCssSelector(
+                    Handler.GetCurrentWebDriver(),
+                    WebElementConstants.CLASS_OPTION,
+                    WebElementConstants.PARAM_VALUE,
+                    option);
 
             Utility.GetElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,
                     TokopediaWebElementConstants.ORDER_BY);
+
+            try {
+                Thread.sleep(3000);
+            } catch (Exception e) {
+
+            }
 
         } else {
             throw new SkipException("Platform " + platform + "is not available for test");
@@ -97,6 +99,29 @@ public class Search {
     @Test
     @Parameters({"platform", "input"})
     public void Select (String platform, @Optional  String input) {
+
+        int index = Constants.FIRST_INDEX;
+        if (input != null)
+            index = Integer.parseInt(input);
+
+        if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
+
+        } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
+
+            Utility.ClickElementsByCssSelector(
+                    Handler.GetCurrentWebDriver(),
+                    WebElementConstants.PARAM_CLASS,
+                    TokopediaWebElementConstants.SEARCH_ITEM_NAME,
+                    index);
+
+        } else {
+            throw new SkipException("Platform " + platform + "is not available for test");
+        }
+    }
+
+    @Test
+    @Parameters({"platform", "input"})
+    public void SelectTopAds (String platform, @Optional  String input) {
 
         int index = Constants.FIRST_INDEX;
         if (input != null)
@@ -120,7 +145,7 @@ public class Search {
             Utility.ClickElementsByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,
-                    TokopediaWebElementConstants.SEARCH_ITEM_NAME,
+                    TokopediaWebElementConstants.SEARCH_TOPADS_ITEM_NAME,
                     index);
 
         } else {

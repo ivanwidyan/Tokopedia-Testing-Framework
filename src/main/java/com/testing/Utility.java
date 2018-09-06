@@ -115,7 +115,8 @@ public class Utility {
      * @param driver web driver
      * @return WebElement
      */
-    public static WebElement ClickElementByXPath(WebDriver driver, String element, String param, String value) {
+    public static WebElement ClickElementByXPath(WebDriver driver, String element,
+                                                 String param, String value) {
         String xpath = "//" + element + "[@" + param + "='" + value + "']";
         return webElementUtility(driver, xpath, ElementConstants.FIND_ELEMENT_TYPE_XPATH, CLICK_TRUE,
                 NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
@@ -127,7 +128,8 @@ public class Utility {
      * @param timeout in seconds
      * @return WebElement
      */
-    public static WebElement ClickElementByXPath(WebDriver driver, String element, String param, String value, long timeout) {
+    public static WebElement ClickElementByXPath(WebDriver driver, String element,
+                                                 String param, String value, long timeout) {
         String xpath = "//" + element + "[@" + param + "='" + value + "']";
         return webElementUtility(driver, xpath, ElementConstants.FIND_ELEMENT_TYPE_XPATH, CLICK_TRUE,
                 NO_SENDKEYS, timeout);
@@ -164,10 +166,12 @@ public class Utility {
      * @param value
      * @return WebElement
      */
-    public static WebElement GetElementByCssSelector (WebDriver driver, String element, String param, String value) {
+    public static WebElement GetElementByCssSelector (WebDriver driver, String element,
+                                                      String param, String value) {
         String cssSelector = element + "[" + param + "='" + value + "']";
-        return webElementUtility(driver, cssSelector, ElementConstants.FIND_ELEMENT_TYPE_CSSSELECTOR,
-                CLICK_FALSE, NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
+        return webElementUtility(driver, cssSelector,
+                ElementConstants.FIND_ELEMENT_TYPE_CSSSELECTOR, CLICK_FALSE,
+                NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
     }
 
     /**
@@ -177,8 +181,21 @@ public class Utility {
      * @param value
      * @return WebElement
      */
-    public static WebElement ClickElementByCssSelector (WebDriver driver, String param, String value) {
+    public static WebElement ClickElementByCssSelector (WebDriver driver, String param,
+                                                        String value) {
         return ClickElementByCssSelector(driver, Constants.EMPTY, param, value);
+    }
+
+    /**
+     * This method used to get element by css selector without element and click with default timeout
+     * @param driver
+     * @param param
+     * @param value
+     * @return WebElement
+     */
+    public static WebElement ClickElementByCssSelector (WebDriver driver, String param,
+                                                        String value, long timeout) {
+        return ClickElementByCssSelector(driver, Constants.EMPTY, param, value, timeout);
     }
 
     /**
@@ -189,10 +206,25 @@ public class Utility {
      * @param value
      * @return WebElement
      */
-    public static WebElement ClickElementByCssSelector (WebDriver driver, String element, String param, String value) {
+    public static WebElement ClickElementByCssSelector (WebDriver driver, String element,
+                                                        String param, String value) {
+        return  ClickElementByCssSelector(driver, element, param,
+                value, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to get element by css selector and click with default timeout
+     * @param driver
+     * @param element or tag
+     * @param param
+     * @param value
+     * @return WebElement
+     */
+    public static WebElement ClickElementByCssSelector (WebDriver driver, String element,
+                                                        String param, String value, long timeout) {
         String cssSelector = element + "[" + param + "='" + value + "']";
         return webElementUtility(driver, cssSelector, ElementConstants.FIND_ELEMENT_TYPE_CSSSELECTOR,
-                CLICK_TRUE, NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
+                CLICK_TRUE, NO_SENDKEYS, timeout);
     }
 
     /**
