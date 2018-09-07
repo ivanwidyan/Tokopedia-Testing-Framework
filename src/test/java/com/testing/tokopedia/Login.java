@@ -4,9 +4,15 @@ import com.testing.Handler;
 import com.testing.Utility;
 import com.testing.constants.ConfigConstants;
 import com.testing.constants.WebElementConstants;
+import com.testing.logging.Log;
 import com.testing.tokopedia.constants.TokopediaAndroidElementConstants;
 import com.testing.tokopedia.constants.TokopediaElementConstants;
 import com.testing.tokopedia.constants.TokopediaWebElementConstants;
+import io.appium.java_client.android.AndroidKeyCode;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.SkipException;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -23,10 +29,6 @@ public class Login {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
 
             // sendkeys id com.tokopedia.tkpd:id/email_auto
-            Utility.ClickElementById(
-                    Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/email_auto");
-
             Utility.SendKeysElementById(
                     Handler.GetCurrentAppiumDriver(),
                     "com.tokopedia.tkpd:id/email_auto",
@@ -78,6 +80,26 @@ public class Login {
                     Handler.GetCurrentAppiumDriver(),
                     TokopediaAndroidElementConstants.ID_CONTAINER_NEW_BUTTON_BUY
             );
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Log.Debug("before tap");
+            Utility.TapByCoordinates(538, 1078);
+            Log.Debug("after tap");
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Log.Debug("before back");
+            Handler.GetCurrentAppiumDriver().navigate().back();
+            Log.Debug("after back");
 
             // sendkeys id com.tokopedia.tkpd:id/email_auto
             Utility.SendKeysElementById(

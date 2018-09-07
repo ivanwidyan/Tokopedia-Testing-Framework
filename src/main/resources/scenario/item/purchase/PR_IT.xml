@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="PR_IT Purchase item suite tests" thread-count="1" parallel="false">
 
-    <test enabled="false" name="PR_IT_001 Purchase sepatu futsal with order by Harga Tertinggi in android" >
+    <test enabled="true" name="PR_IT_001 Purchase sepatu futsal with order by Harga Tertinggi in android" >
 
         <parameter name="platform" value="android" />
 
@@ -36,15 +36,23 @@
             </class>
             <class name="com.testing.tokopedia.search.Cart" >
                 <methods>
-                    <include name = "Note" />
+                    <include name = "Note" >
+                        <parameter name = "input" value="testing long notes"/>
+                    </include>
                     <include name = "AddQuantity" />
                     <include name = "Checkout" />
+                </methods>
+            </class>
+            <class name="com.testing.tokopedia.search.Checkout" >
+                <methods>
+                    <include name = "ChooseCourrier" />
+                    <include name = "Pay" />
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test enabled="true" name="PR_IT_002 Purchase sepatu futsal with order by Harga Tertinggi in web" >
+    <test enabled="false" name="PR_IT_002 Purchase sepatu futsal with order by Harga Terendah in web" >
 
         <parameter name="platform" value="web" />
 
@@ -79,7 +87,9 @@
             <class name="com.testing.tokopedia.search.Cart" >
                 <methods>
                     <include name = "Note" />
-                    <include name = "AddQuantity" />
+                    <include name = "AddQuantity" >
+                        <parameter name = "input" value="2"/>
+                    </include>
                     <include name = "Checkout" />
                 </methods>
             </class>

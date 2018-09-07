@@ -43,6 +43,12 @@ public class Search {
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
 
+            try {
+                Thread.sleep(10000);
+            } catch (Exception e) {
+
+            }
+
             Utility.ClickElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,
