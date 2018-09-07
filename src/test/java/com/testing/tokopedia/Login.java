@@ -82,24 +82,24 @@ public class Login {
             );
 
             try {
-                Thread.sleep(5000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            Log.Debug("before tap");
+//            Log.Debug("before tap");
             Utility.TapByCoordinates(538, 1078);
-            Log.Debug("after tap");
+//            Log.Debug("after tap");
 
             try {
-                Thread.sleep(5000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            Log.Debug("before back");
+//            Log.Debug("before back");
             Handler.GetCurrentAppiumDriver().navigate().back();
-            Log.Debug("after back");
+//            Log.Debug("after back");
 
             // sendkeys id com.tokopedia.tkpd:id/email_auto
             Utility.SendKeysElementById(
