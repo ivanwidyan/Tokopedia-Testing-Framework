@@ -92,7 +92,7 @@ public class Login {
 //            Log.Debug("after tap");
 
             try {
-                Thread.sleep(10000);
+                Thread.sleep(15000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

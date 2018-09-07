@@ -9,10 +9,7 @@ package com.testing.tokopedia.search;
 
 import com.testing.Handler;
 import com.testing.Utility;
-import com.testing.constants.AndroidElementConstants;
-import com.testing.constants.ConfigConstants;
-import com.testing.constants.Constants;
-import com.testing.constants.WebElementConstants;
+import com.testing.constants.*;
 import com.testing.logging.Log;
 import com.testing.tokopedia.constants.TokopediaAndroidElementConstants;
 import com.testing.tokopedia.constants.TokopediaWebElementConstants;
@@ -28,11 +25,12 @@ public class Search {
     public void OrderBy (String platform, String input) {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
 
-            Utility.ClickElementByXPath(
+            Utility.ClickElementsByXpath(
                     Handler.GetCurrentAppiumDriver(),
                     AndroidElementConstants.CLASS_ANDROID_WIDGET_TEXTVIEW,
                     AndroidElementConstants.PARAM_TEXT,
-                    TokopediaAndroidElementConstants.TEXT_SORT);
+                    TokopediaAndroidElementConstants.TEXT_SORT,
+                    Constants.FIRST_INDEX);
 
             Utility.ClickElementByXPath(
                     Handler.GetCurrentAppiumDriver(),
