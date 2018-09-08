@@ -43,8 +43,10 @@ public class SetUp {
 
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setCapability(ConfigConstants.CAPABILITIES_DEVICE_NAME, devicename);
-                capabilities.setCapability(CapabilityType.BROWSER_NAME,
-                        TokopediaConfigConstants.BROWSER_NAME);
+
+                // 2018/09/07: Deprecated in Appium 1.9.0
+                /*capabilities.setCapability(CapabilityType.BROWSER_NAME,
+                        TokopediaConfigConstants.BROWSER_NAME);*/
 
                 capabilities.setCapability(ConfigConstants.CAPABILITIES_PLATFORM_NAME,
                         TokopediaConfigConstants.PLATFORM_NAME);
@@ -84,8 +86,7 @@ public class SetUp {
             Handler.GetCurrentWebDriver().manage().timeouts().implicitlyWait(
                     ConfigConstants.DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
-            String url = "https://www.tokopedia.com";
-            Handler.GetCurrentWebDriver().get(url);
+            Handler.GetCurrentWebDriver().get(TokopediaConfigConstants.URL);
         }
     }
 

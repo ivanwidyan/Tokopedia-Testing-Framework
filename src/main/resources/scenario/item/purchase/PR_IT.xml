@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="PR_IT Purchase item suite tests" thread-count="2" parallel="tests">
+<suite name="PR_IT Purchase item suite tests" thread-count="1" parallel="false">
 
     <test enabled="true" name="PR_IT_001 Purchase sepatu futsal with order by Harga Tertinggi in android" >
 
@@ -16,19 +16,43 @@
                     </include>
                 </methods>
             </class>
-            <class name="com.testing.tokopedia.Search">
+            <class name="com.testing.tokopedia.search.Search">
                 <methods>
                     <include name = "OrderBy">
                         <parameter name = "input" value="Harga Tertinggi"/>
                     </include>
-                    <include name = "Select" />
+                    <include name = "SelectTopAds" />
                 </methods>
             </class>
-            <class name="com.testing.tokopedia.Summary" />
+            <class name="com.testing.tokopedia.Login" >
+                <methods>
+                    <include name = "SummaryLogin" />
+                </methods>
+            </class>
+            <class name="com.testing.tokopedia.search.Summary" >
+                <methods>
+                    <include name = "Buy" />
+                </methods>
+            </class>
+            <class name="com.testing.tokopedia.search.Cart" >
+                <methods>
+                    <include name = "Note" >
+                        <parameter name = "input" value="testing long notes"/>
+                    </include>
+                    <include name = "AddQuantity" />
+                    <include name = "Checkout" />
+                </methods>
+            </class>
+            <class name="com.testing.tokopedia.search.Checkout" >
+                <methods>
+                    <include name = "ChooseCourrier" />
+                    <include name = "Pay" />
+                </methods>
+            </class>
         </classes>
     </test>
 
-    <test enabled="true" name="PR_IT_002 Purchase sepatu futsal with order by Harga Tertinggi in web" >
+    <test enabled="false" name="PR_IT_002 Purchase sepatu futsal with order by Harga Terendah in web" >
 
         <parameter name="platform" value="web" />
 
@@ -42,7 +66,7 @@
                     </include>
                 </methods>
             </class>
-            <class name="com.testing.tokopedia.Search">
+            <class name="com.testing.tokopedia.search.Search">
                 <methods>
                     <include name = "OrderBy">
                         <parameter name = "input" value="Harga Terendah"/>
@@ -50,7 +74,31 @@
                     <include name = "Select" />
                 </methods>
             </class>
-            <class name="com.testing.tokopedia.Summary" />
+            <class name="com.testing.tokopedia.Login" >
+                <methods>
+                    <include name = "SummaryLogin" />
+                </methods>
+            </class>
+            <class name="com.testing.tokopedia.search.Summary" >
+                <methods>
+                    <include name = "Buy" />
+                </methods>
+            </class>
+            <class name="com.testing.tokopedia.search.Cart" >
+                <methods>
+                    <include name = "Note" />
+                    <include name = "AddQuantity" >
+                        <parameter name = "input" value="2"/>
+                    </include>
+                    <include name = "Checkout" />
+                </methods>
+            </class>
+            <class name="com.testing.tokopedia.search.Checkout" >
+                <methods>
+                    <include name = "ChooseCourrier" />
+                    <include name = "Pay" />
+                </methods>
+            </class>
         </classes>
     </test>
 

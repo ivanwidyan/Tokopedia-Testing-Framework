@@ -5,14 +5,11 @@
  * Email: ivanwidyan@yahoo.com
  */
 
-package com.testing.tokopedia;
+package com.testing.tokopedia.search;
 
 import com.testing.Handler;
 import com.testing.Utility;
-import com.testing.constants.AndroidElementConstants;
-import com.testing.constants.ConfigConstants;
-import com.testing.constants.Constants;
-import com.testing.constants.WebElementConstants;
+import com.testing.constants.*;
 import com.testing.logging.Log;
 import com.testing.tokopedia.constants.TokopediaAndroidElementConstants;
 import com.testing.tokopedia.constants.TokopediaWebElementConstants;
@@ -27,12 +24,12 @@ public class Search {
     @Parameters({"platform", "input"})
     public void OrderBy (String platform, String input) {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
-
-            Utility.ClickElementByXPath(
+            Utility.ClickElementsByXpath(
                     Handler.GetCurrentAppiumDriver(),
                     AndroidElementConstants.CLASS_ANDROID_WIDGET_TEXTVIEW,
                     AndroidElementConstants.PARAM_TEXT,
-                    TokopediaAndroidElementConstants.TEXT_SORT);
+                    TokopediaAndroidElementConstants.TEXT_SORT,
+                    Constants.FIRST_INDEX);
 
             Utility.ClickElementByXPath(
                     Handler.GetCurrentAppiumDriver(),
@@ -42,6 +39,11 @@ public class Search {
 
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
+            try {
+                Thread.sleep(10000);
+            } catch (Exception e) {
+
+            }
 
             Utility.ClickElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
@@ -74,20 +76,22 @@ public class Search {
             else
                 Log.Error("Sort option " + option + " is not available");
 
-            try {
-                Utility.ClickElementByCssSelector(
-                        Handler.GetCurrentWebDriver(),
-                        WebElementConstants.CLASS_OPTION,
-                        WebElementConstants.PARAM_VALUE,
-                        option);
-            } catch (Exception e) {
-                Log.Error("Error: " + e);
-            }
+            Utility.ClickElementByCssSelector(
+                    Handler.GetCurrentWebDriver(),
+                    WebElementConstants.CLASS_OPTION,
+                    WebElementConstants.PARAM_VALUE,
+                    option);
 
             Utility.GetElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,
                     TokopediaWebElementConstants.ORDER_BY);
+
+            try {
+                Thread.sleep(3000);
+            } catch (Exception e) {
+
+            }
 
         } else {
             throw new SkipException("Platform " + platform + "is not available for test");
@@ -104,6 +108,27 @@ public class Search {
 
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
 
+        } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
+            Utility.ClickElementsByCssSelector(
+                    Handler.GetCurrentWebDriver(),
+                    WebElementConstants.PARAM_CLASS,
+                    TokopediaWebElementConstants.SEARCH_ITEM_NAME,
+                    index);
+
+        } else {
+            throw new SkipException("Platform " + platform + "is not available for test");
+        }
+    }
+
+    @Test
+    @Parameters({"platform", "input"})
+    public void SelectTopAds (String platform, @Optional  String input) {
+
+        int index = Constants.FIRST_INDEX;
+        if (input != null)
+            index = Integer.parseInt(input);
+
+        if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
             Utility.ClickElementByXPath(
                     Handler.GetCurrentAppiumDriver(),
                     AndroidElementConstants.CLASS_ANDROID_WIDGET_TEXTVIEW,
@@ -116,11 +141,10 @@ public class Search {
                     TokopediaAndroidElementConstants.ID_TEXT_NEXT);
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementsByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,
-                    TokopediaWebElementConstants.SEARCH_ITEM_NAME,
+                    TokopediaWebElementConstants.SEARCH_TOPADS_ITEM_NAME,
                     index);
 
         } else {

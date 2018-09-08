@@ -14,6 +14,7 @@ import com.testing.constants.Constants;
 import com.testing.constants.WebElementConstants;
 
 import com.testing.tokopedia.constants.TokopediaAndroidElementConstants;
+import com.testing.tokopedia.constants.TokopediaElementConstants;
 import com.testing.tokopedia.constants.TokopediaWebElementConstants;
 import org.testng.SkipException;
 import org.testng.annotations.*;
@@ -24,7 +25,6 @@ public class Home {
     @Parameters({"platform", "input"})
     public void Search (String platform, String input) {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementById(
                     Handler.GetCurrentAppiumDriver(),
                     TokopediaAndroidElementConstants.ID_SEARCH_CONTAINER);
@@ -44,7 +44,6 @@ public class Home {
                     TokopediaAndroidElementConstants.ID_TEXT_NEXT);
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             Utility.SendKeysElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_ID,

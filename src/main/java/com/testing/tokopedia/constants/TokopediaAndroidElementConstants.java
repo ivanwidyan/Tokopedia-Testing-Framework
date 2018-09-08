@@ -26,4 +26,19 @@ public class TokopediaAndroidElementConstants {
     // Summary
     public final static String ID_CONTAINER_NEW_BUTTON_BUY = "com.tokopedia.tkpd:id/container_new_button_buy";
 
+    // Login
+    public final static String ID_EMAIL_AUTO = "com.tokopedia.tkpd:id/email_auto";
+    public final static String ID_PASSWORD = "com.tokopedia.tkpd:id/password";
+    public final static String ID_ACCOUNTS_SIGN_IN = "com.tokopedia.tkpd:id/accounts_sign_in";
+
+    // Cart
+    public final static String ID_ET_REMARK = "com.tokopedia.tkpd:id/et_remark";
+    public final static String ID_IMAGE_BUTTON_PLUS = "com.tokopedia.tkpd:id/image_button_plus";
+    public final static String ID_NEW_BUTTON_SAVE = "com.tokopedia.tkpd:id/new_button_save";
+    public final static String ID_GO_TO_COURIER_PAGE_BUTTON = "com.tokopedia.tkpd:id/go_to_courier_page_button";
+
+    // Checkout
+    public final static String TEXT_PILIH_KURIR = "Pilih Kurir";
+    public final static String ID_TV_SELECT_PAYMENT_METHOD = "com.tokopedia.tkpd:id/tv_select_payment_method";
+
 }

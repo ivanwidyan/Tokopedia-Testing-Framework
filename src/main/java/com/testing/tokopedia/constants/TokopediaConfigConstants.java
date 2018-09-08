@@ -20,11 +20,5 @@ public class TokopediaConfigConstants {
     // Web Set up
     public final static String URL = "https://www.tokopedia.com";
 
-    public final static String DEFAULT_FULLNAME = "Ivan Widyan";
-    public final static String DEFAULT_MOBILENUMBER = "82140617776";
-    public final static String DEFAULT_EMAIL = "ivanwidyan@ivanwidyan.com";
-    public final static String ANDROID_DEFAULT_TITLE = "Mr.";
-    public final static String WEB_DEFAULT_TITLE = "MR";
-
     public final static long TOOLTIP_TIMEOUT = 15;
 }
