@@ -27,43 +27,53 @@ public class Login {
     public void Login (String platform, @Optional String username,
                        @Optional String password) {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
+            // Built to handle unable to load in login activity
+            // TODO: find the solution
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Utility.TapByCoordinates(538, 1078);
 
-            // sendkeys id com.tokopedia.tkpd:id/email_auto
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Handler.GetCurrentAppiumDriver().navigate().back();
+
             Utility.SendKeysElementById(
                     Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/email_auto",
+                    TokopediaAndroidElementConstants.ID_EMAIL_AUTO,
                     TokopediaElementConstants.TEST_EMAIL);
 
-            // sendkeys id com.tokopedia.tkpd:id/password
             Utility.SendKeysElementById(
                     Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/password",
+                    TokopediaAndroidElementConstants.ID_PASSWORD,
                     TokopediaElementConstants.TEST_PASSWORD);
 
-            // sendkeys id com.tokopedia.tkpd:id/accounts_sign_in
             Utility.ClickElementById(
                     Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/accounts_sign_in");
+                    TokopediaAndroidElementConstants.ID_ACCOUNTS_SIGN_IN);
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             Utility.SendKeysElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_ID,
-                    "email",
+                    TokopediaWebElementConstants.LOGIN_EMAIL,
                     TokopediaElementConstants.TEST_EMAIL);
 
             Utility.SendKeysElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_ID,
-                    "password",
+                    TokopediaWebElementConstants.LOGIN_PASSWORD,
                     TokopediaElementConstants.TEST_PASSWORD);
 
-            // send keys id inputPassword
             Utility.ClickElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_ID,
-                    "login-submit");
+                    TokopediaWebElementConstants.LOGIN_SUBMIT);
 
         } else {
             throw new SkipException("Platform " + platform + "is not available for test");
@@ -86,40 +96,30 @@ public class Login {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-//            Log.Debug("before tap");
             Utility.TapByCoordinates(538, 1078);
-//            Log.Debug("after tap");
 
             try {
-                Thread.sleep(15000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-//            Log.Debug("before back");
             Handler.GetCurrentAppiumDriver().navigate().back();
-//            Log.Debug("after back");
 
-            // sendkeys id com.tokopedia.tkpd:id/email_auto
             Utility.SendKeysElementById(
                     Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/email_auto",
+                    TokopediaAndroidElementConstants.ID_EMAIL_AUTO,
                     TokopediaElementConstants.TEST_EMAIL);
 
-            // sendkeys id com.tokopedia.tkpd:id/password
             Utility.SendKeysElementById(
                     Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/password",
+                    TokopediaAndroidElementConstants.ID_PASSWORD,
                     TokopediaElementConstants.TEST_PASSWORD);
 
-            // sendkeys id com.tokopedia.tkpd:id/accounts_sign_in
             Utility.ClickElementById(
                     Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/accounts_sign_in");
+                    TokopediaAndroidElementConstants.ID_ACCOUNTS_SIGN_IN);
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             ArrayList<String> tabs = new ArrayList<>(
                     Handler.GetCurrentWebDriver().getWindowHandles());
 
@@ -144,20 +144,19 @@ public class Login {
             Utility.SendKeysElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_ID,
-                    "email",
+                    TokopediaWebElementConstants.LOGIN_EMAIL,
                     TokopediaElementConstants.TEST_EMAIL);
 
             Utility.SendKeysElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_ID,
-                    "password",
+                    TokopediaWebElementConstants.LOGIN_PASSWORD,
                     TokopediaElementConstants.TEST_PASSWORD);
 
-            // send keys id inputPassword
             Utility.ClickElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_ID,
-                    "login-submit");
+                    TokopediaWebElementConstants.LOGIN_SUBMIT);
 
         } else {
             throw new SkipException("Platform " + platform + "is not available for test");

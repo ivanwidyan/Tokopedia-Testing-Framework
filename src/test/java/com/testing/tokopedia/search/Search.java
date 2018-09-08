@@ -24,7 +24,6 @@ public class Search {
     @Parameters({"platform", "input"})
     public void OrderBy (String platform, String input) {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementsByXpath(
                     Handler.GetCurrentAppiumDriver(),
                     AndroidElementConstants.CLASS_ANDROID_WIDGET_TEXTVIEW,
@@ -40,7 +39,6 @@ public class Search {
 
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             try {
                 Thread.sleep(10000);
             } catch (Exception e) {
@@ -111,7 +109,6 @@ public class Search {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementsByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,
@@ -132,7 +129,6 @@ public class Search {
             index = Integer.parseInt(input);
 
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementByXPath(
                     Handler.GetCurrentAppiumDriver(),
                     AndroidElementConstants.CLASS_ANDROID_WIDGET_TEXTVIEW,
@@ -145,7 +141,6 @@ public class Search {
                     TokopediaAndroidElementConstants.ID_TEXT_NEXT);
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementsByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,

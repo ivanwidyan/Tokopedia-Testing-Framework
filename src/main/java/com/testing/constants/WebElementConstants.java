@@ -18,7 +18,8 @@ public class WebElementConstants {
     public final static String PARAM_VALUE = "value";
     public final static String PARAM_NG_MODEL = "ng-model";
     public final static String PARAM_ID = "id";
-    public final static String PARAM_NAME= "name";
+    public final static String PARAM_NAME = "name";
+    public final static String PARAM_DATA_SHIPPER_NAME = "data-shipper-name";
 
     // Tabs
     public final static int FIRST_TABS = 0;

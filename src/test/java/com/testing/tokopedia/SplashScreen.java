@@ -25,9 +25,6 @@ public class SplashScreen {
                     TokopediaAndroidElementConstants.ID_SKIP
             );
 
-        } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
-
         } else {
             throw new SkipException("This test only for Android!");
         }

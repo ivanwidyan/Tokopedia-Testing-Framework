@@ -34,47 +34,71 @@ public class Utility {
 
     /**
      * This method used to get element by id with default timeout
-     * @param driver WebDriver
+     * @param driver
      * @param id element
      * @return WebElement
      */
     public static WebElement GetElementById (WebDriver driver, String id) {
+        return GetElementById(driver, id, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to get element by id with input timeout
+     * @param driver
+     * @param id element
+     * @param timeout in seconds
+     * @return WebElement
+     */
+    public static WebElement GetElementById (WebDriver driver, String id, long timeout) {
         return webElementUtility(driver, id, ElementConstants.FIND_ELEMENT_TYPE_ID, CLICK_FALSE,
-                NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
+                NO_SENDKEYS, timeout);
     }
 
     /**
      * This method used to get element by id and click with default timeout
-     * @param driver WebDriver
+     * @param driver
      * @param id
      * @return WebElement
      */
     public static WebElement ClickElementById (WebDriver driver, String id) {
-        return webElementUtility(driver, id, ElementConstants.FIND_ELEMENT_TYPE_ID, CLICK_TRUE,
-                NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
+        return ClickElementById(driver, id, ConfigConstants.DEFAULT_TIMEOUT);
     }
 
     /**
      * This method used to get element by id and click with input timeout
-     * @param driver WebDriver
+     * @param driver
      * @param id
      * @param timeout in seconds
      * @return
      */
     public static WebElement ClickElementById (WebDriver driver, String id, long timeout) {
-        return webElementUtility(driver, id, ElementConstants.FIND_ELEMENT_TYPE_ID, CLICK_TRUE,
-                NO_SENDKEYS, timeout);
+        return webElementUtility(driver, id, ElementConstants.FIND_ELEMENT_TYPE_ID,
+                CLICK_TRUE, NO_SENDKEYS, timeout);
     }
 
     /**
      * This method used to get element by id and send keys with default timeout
-     * @param driver WebDriver
+     * @param driver
      * @param id
+     * @param sendKeys
      * @return WebElement
      */
     public static WebElement SendKeysElementById (WebDriver driver, String id, String sendKeys) {
+        return SendKeysElementById(driver, id, sendKeys, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to get element by id and send keys with input timeout
+     * @param driver
+     * @param id
+     * @param sendKeys
+     * @param timeout in seconds
+     * @return WebElement
+     */
+    public static WebElement SendKeysElementById (WebDriver driver, String id, String sendKeys,
+                                                  long timeout) {
         return webElementUtility(driver, id, ElementConstants.FIND_ELEMENT_TYPE_ID, CLICK_FALSE,
-                sendKeys, ConfigConstants.DEFAULT_TIMEOUT);
+                sendKeys, timeout);
     }
 
     /**
@@ -84,67 +108,137 @@ public class Utility {
      * @return WebElement
      */
     public static WebElement ClickElementByClassName (WebDriver driver, String className) {
-        return webElementUtility(driver, className, ElementConstants.FIND_ELEMENT_TYPE_CLASSNAME, CLICK_TRUE,
-                NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
+        return ClickElementByClassName(driver, className, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to get element by class name and click with input timeout
+     * @param driver
+     * @param className
+     * @param timeout in seconds
+     * @return WebElement
+     */
+    public static WebElement ClickElementByClassName (WebDriver driver, String className,
+                                                      long timeout) {
+        return webElementUtility(driver, className, ElementConstants.FIND_ELEMENT_TYPE_CLASSNAME,
+                CLICK_TRUE, NO_SENDKEYS, timeout);
     }
 
     /**
      * This method used to get element by class name and send keys with default timeout
      * @param driver
      * @param className
+     * @param sendKeys
      * @return WebElement
      */
-    public static WebElement SendKeysElementByClassName (WebDriver driver, String className, String sendKeys) {
-        return webElementUtility(driver, className, ElementConstants.FIND_ELEMENT_TYPE_CLASSNAME, CLICK_FALSE,
-                sendKeys, ConfigConstants.DEFAULT_TIMEOUT);
+    public static WebElement SendKeysElementByClassName (WebDriver driver, String className,
+                                                         String sendKeys) {
+        return SendKeysElementByClassName(driver, className, sendKeys, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to get element by class name and send keys with input timeout
+     * @param driver
+     * @param className
+     * @param sendKeys
+     * @param timeout in seconds
+     * @return WebElement
+     */
+    public static WebElement SendKeysElementByClassName (WebDriver driver, String className,
+                                                         String sendKeys, long timeout) {
+        return webElementUtility(driver, className, ElementConstants.FIND_ELEMENT_TYPE_CLASSNAME,
+                CLICK_FALSE, sendKeys, timeout);
     }
 
     /**
      * This method used to find element by text with default timeout
      * @param driver
+     * @param element
+     * @param param
+     * @param value
      * @return WebElement
      */
-    public static WebElement GetElementByXPath(WebDriver driver, String element, String param, String value) {
+    public static WebElement GetElementByXPath(WebDriver driver, String element,
+                                               String param, String value) {
+        return GetElementByXPath(driver, element, param, value, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to find element by text with input timeout
+     * @param driver
+     * @param element
+     * @param param
+     * @param value
+     * @param timeout
+     * @return WebElement
+     */
+    public static WebElement GetElementByXPath(WebDriver driver, String element,
+                                               String param, String value, long timeout) {
         String xpath = "//" + element + "[@" + param + "='" + value + "']";
-        return webElementUtility(driver, xpath, ElementConstants.FIND_ELEMENT_TYPE_XPATH, CLICK_FALSE,
-                NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
+        return webElementUtility(driver, xpath, ElementConstants.FIND_ELEMENT_TYPE_XPATH,
+                CLICK_FALSE, NO_SENDKEYS, timeout);
     }
 
     /**
      * This method used to find element by text and click with default timeout
-     * @param driver web driver
+     * @param driver
+     * @param element
+     * @param param
+     * @param value
      * @return WebElement
      */
     public static WebElement ClickElementByXPath(WebDriver driver, String element,
                                                  String param, String value) {
-        String xpath = "//" + element + "[@" + param + "='" + value + "']";
-        return webElementUtility(driver, xpath, ElementConstants.FIND_ELEMENT_TYPE_XPATH, CLICK_TRUE,
-                NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
+        return ClickElementByXPath(driver, element, param, value, ConfigConstants.DEFAULT_TIMEOUT);
     }
 
     /**
      * This method used to find element by text and click with input timeout
      * @param driver web driver
+     * @param element
+     * @param param
+     * @param value
      * @param timeout in seconds
      * @return WebElement
      */
     public static WebElement ClickElementByXPath(WebDriver driver, String element,
                                                  String param, String value, long timeout) {
         String xpath = "//" + element + "[@" + param + "='" + value + "']";
-        return webElementUtility(driver, xpath, ElementConstants.FIND_ELEMENT_TYPE_XPATH, CLICK_TRUE,
-                NO_SENDKEYS, timeout);
+        return webElementUtility(driver, xpath, ElementConstants.FIND_ELEMENT_TYPE_XPATH,
+                CLICK_TRUE, NO_SENDKEYS, timeout);
     }
 
     /**
      * This method used to find element by text and send keys with default timeout
      * @param driver web driver
+     * @param element
+     * @param param
+     * @param value
      * @param sendKeys
      * @return WebElement
      */
-    public static WebElement SendKeysElementByXPath(WebDriver driver, String element, String param, String value, String sendKeys) {
+    public static WebElement SendKeysElementByXPath(WebDriver driver, String element,
+                                                    String param, String value, String sendKeys) {
+        return SendKeysElementByXPath(driver, element, param, value,
+                sendKeys, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to find element by text and send keys with input timeout
+     * @param driver web driver
+     * @param element
+     * @param param
+     * @param value
+     * @param sendKeys
+     * @param timeout in seconds
+     * @return WebElement
+     */
+    public static WebElement SendKeysElementByXPath(WebDriver driver, String element,
+                                                    String param, String value,
+                                                    String sendKeys, long timeout) {
         String xpath = "//" + element + "[@" + param + "='" + value + "']";
         return webElementUtility(driver, xpath, ElementConstants.FIND_ELEMENT_TYPE_XPATH, CLICK_FALSE,
-                sendKeys, ConfigConstants.DEFAULT_TIMEOUT);
+                sendKeys, timeout);
     }
 
     /**
@@ -154,8 +248,22 @@ public class Utility {
      * @param value
      * @return WebElement
      */
-    public static WebElement GetElementByCssSelector (WebDriver driver, String param, String value) {
-        return GetElementByCssSelector(driver, Constants.EMPTY, param, value);
+    public static WebElement GetElementByCssSelector (WebDriver driver, String param,
+                                                      String value) {
+        return GetElementByCssSelector(driver, param, value, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to get element by css selector without element with input timeout
+     * @param driver
+     * @param param
+     * @param value
+     * @param timeout in seconds
+     * @return WebElement
+     */
+    public static WebElement GetElementByCssSelector (WebDriver driver, String param,
+                                                      String value, long timeout) {
+        return GetElementByCssSelector(driver, Constants.EMPTY, param, value, timeout);
     }
 
     /**
@@ -168,10 +276,25 @@ public class Utility {
      */
     public static WebElement GetElementByCssSelector (WebDriver driver, String element,
                                                       String param, String value) {
+        return GetElementByCssSelector(driver, element, param, value,
+                ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to get element by css selector with input timeout
+     * @param driver
+     * @param element or tag
+     * @param param
+     * @param value
+     * @param timeout in seconds
+     * @return WebElement
+     */
+    public static WebElement GetElementByCssSelector (WebDriver driver, String element,
+                                                      String param, String value, long timeout) {
         String cssSelector = element + "[" + param + "='" + value + "']";
         return webElementUtility(driver, cssSelector,
                 ElementConstants.FIND_ELEMENT_TYPE_CSSSELECTOR, CLICK_FALSE,
-                NO_SENDKEYS, ConfigConstants.DEFAULT_TIMEOUT);
+                NO_SENDKEYS, timeout);
     }
 
     /**
@@ -183,14 +306,15 @@ public class Utility {
      */
     public static WebElement ClickElementByCssSelector (WebDriver driver, String param,
                                                         String value) {
-        return ClickElementByCssSelector(driver, Constants.EMPTY, param, value);
+        return ClickElementByCssSelector(driver, param, value, ConfigConstants.DEFAULT_TIMEOUT);
     }
 
     /**
-     * This method used to get element by css selector without element and click with default timeout
+     * This method used to get element by css selector without element and click with input timeout
      * @param driver
      * @param param
      * @param value
+     * @param timeout in seconds
      * @return WebElement
      */
     public static WebElement ClickElementByCssSelector (WebDriver driver, String param,
@@ -213,11 +337,12 @@ public class Utility {
     }
 
     /**
-     * This method used to get element by css selector and click with default timeout
+     * This method used to get element by css selector and click with input timeout
      * @param driver
      * @param element or tag
      * @param param
      * @param value
+     * @param timeout in seconds
      * @return WebElement
      */
     public static WebElement ClickElementByCssSelector (WebDriver driver, String element,
@@ -232,11 +357,26 @@ public class Utility {
      * @param driver
      * @param param
      * @param value
+     * @param sendKeys
      * @return WebElement
      */
     public static WebElement SendKeysElementByCssSelector (WebDriver driver, String param,
                                                            String value, String sendKeys) {
-        return SendKeysElementByCssSelector(driver, Constants.EMPTY, param, value, sendKeys);
+        return SendKeysElementByCssSelector(driver, param, value, sendKeys, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to get element by css selector without element and send keys with input timeout
+     * @param driver
+     * @param param
+     * @param value
+     * @param sendKeys
+     * @param timeout in seconds
+     * @return WebElement
+     */
+    public static WebElement SendKeysElementByCssSelector (WebDriver driver, String param,
+                                                           String value, String sendKeys, long timeout) {
+        return SendKeysElementByCssSelector(driver, Constants.EMPTY, param, value, sendKeys, timeout);
     }
 
     /**
@@ -245,13 +385,31 @@ public class Utility {
      * @param element or tag
      * @param param
      * @param value
+     * @param sendKeys
      * @return WebElement
      */
     public static WebElement SendKeysElementByCssSelector (WebDriver driver, String element,
                                                            String param, String value, String sendKeys) {
+        return SendKeysElementByCssSelector(driver, element, param, value,
+                sendKeys, ConfigConstants.DEFAULT_TIMEOUT);
+    }
+
+    /**
+     * This method used to get element by css selector and send keys with input timeout
+     * @param driver
+     * @param element or tag
+     * @param param
+     * @param value
+     * @param sendKeys
+     * @param timeout in seconds
+     * @return WebElement
+     */
+    public static WebElement SendKeysElementByCssSelector (WebDriver driver, String element,
+                                                           String param, String value,
+                                                           String sendKeys, long timeout) {
         String cssSelector = element + "[" + param + "='" + value + "']";
         return webElementUtility(driver, cssSelector, ElementConstants.FIND_ELEMENT_TYPE_CSSSELECTOR,
-                CLICK_FALSE, sendKeys, ConfigConstants.DEFAULT_TIMEOUT);
+                CLICK_FALSE, sendKeys, timeout);
     }
 
     private static WebElement webElementUtility (WebDriver driver, String input, String type, boolean click,
@@ -339,6 +497,7 @@ public class Utility {
      * This method used to get elements by id and click by index with default timeout
      * @param driver
      * @param id
+     * @param index
      * @return List<WebElement>
      */
     public static List<WebElement> ClickElementsById (WebDriver driver, String id, int index) {

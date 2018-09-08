@@ -8,10 +8,13 @@
 package com.testing.tokopedia.constants;
 
 public class TokopediaWebElementConstants {
+    // General
+    public final static String HOPSCOTCH_NEXT = "hopscotch-nav-button next hopscotch-next";
+    public final static String BUTTON_PROCEED_BUTTON = "btn proceed-button";
+
     // Home
     public final static String SEARCH_KEYWORD = "search-keyword";
     public final static String SEARCH_NEW_BUTTON = "btn new-btn-search";
-
     public final static String HOME_LOGIN = "login-ddl-link";
 
     // Order By
@@ -40,6 +43,18 @@ public class TokopediaWebElementConstants {
     public final static String SEARCH_TOPADS_ITEM_NAME ="ta-product-meta__name ta-ellipsis";
     public final static String SEARCH_TOPADS_ITEM_PRICE = "ta-product-meta__price";
     public final static String SEARCH_TOPADS_ITEM_RATING = "class ta-product-meta__rating";
+
+    // Login
+    public final static String LOGIN_EMAIL = "email";
+    public final static String LOGIN_PASSWORD = "password";
+    public final static String LOGIN_SUBMIT = "login-submit";
+
+    // Cart
+    public final static String CART_NOTE_TEXT = "note-text";
+    public final static String CART_PLUS_BUTTON_QUANTITY_BUTTON = "cart-plus-button quantity-button";
+
+    // Checkout
+    public final static String CHECKOUT_TOGGLE_HANDLER = "toggle-handler";
 
 }
 

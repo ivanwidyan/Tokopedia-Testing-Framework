@@ -7,7 +7,7 @@ import com.testing.constants.WebElementConstants;
 import com.testing.logging.Log;
 import com.testing.tokopedia.constants.TokopediaAndroidElementConstants;
 import com.testing.tokopedia.constants.TokopediaConfigConstants;
-import com.testing.tokopedia.constants.TokopediaElementConstants;
+import com.testing.tokopedia.constants.TokopediaWebElementConstants;
 import org.testng.SkipException;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -26,14 +26,14 @@ public class Cart {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
             Utility.SendKeysElementById(
                     Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/et_remark",
+                    TokopediaAndroidElementConstants.ID_ET_REMARK,
                     input);
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
             Utility.SendKeysElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,
-                    "note-text",
+                    TokopediaWebElementConstants.CART_NOTE_TEXT,
                     input);
 
         } else {
@@ -51,20 +51,18 @@ public class Cart {
         }
 
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
-
             for (int i = 0; i < quantity; i++) {
                 Utility.ClickElementById(
                         Handler.GetCurrentAppiumDriver(),
-                        "com.tokopedia.tkpd:id/image_button_plus");
+                        TokopediaAndroidElementConstants.ID_IMAGE_BUTTON_PLUS);
             }
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             for (int i = 0; i < quantity; i++) {
                 Utility.ClickElementByCssSelector(
                         Handler.GetCurrentWebDriver(),
                         WebElementConstants.PARAM_CLASS,
-                        "cart-plus-button quantity-button");
+                        TokopediaWebElementConstants.CART_PLUS_BUTTON_QUANTITY_BUTTON);
             }
 
         } else {
@@ -79,11 +77,11 @@ public class Cart {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
             Utility.ClickElementById(
                     Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/new_button_save");
+                    TokopediaAndroidElementConstants.ID_NEW_BUTTON_SAVE);
 
             Utility.ClickElementById(
                     Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/go_to_courier_page_button");
+                    TokopediaAndroidElementConstants.ID_GO_TO_COURIER_PAGE_BUTTON);
 
             Utility.ClickElementById(
                     Handler.GetCurrentAppiumDriver(),
@@ -94,23 +92,22 @@ public class Cart {
                     TokopediaAndroidElementConstants.ID_TEXT_NEXT);
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,
-                    "btn proceed-button");
+                    TokopediaWebElementConstants.BUTTON_PROCEED_BUTTON);
 
             try {
                 Utility.ClickElementByCssSelector(
                         Handler.GetCurrentWebDriver(),
                         WebElementConstants.PARAM_CLASS,
-                        "hopscotch-nav-button next hopscotch-next",
+                        TokopediaWebElementConstants.HOPSCOTCH_NEXT,
                         TokopediaConfigConstants.TOOLTIP_TIMEOUT);
 
                 Utility.ClickElementByCssSelector(
                         Handler.GetCurrentWebDriver(),
                         WebElementConstants.PARAM_CLASS,
-                        "hopscotch-nav-button next hopscotch-next",
+                        TokopediaWebElementConstants.HOPSCOTCH_NEXT,
                         TokopediaConfigConstants.TOOLTIP_TIMEOUT);
             } catch (Exception e) {
                 Log.Debug("Tooltip is not available");

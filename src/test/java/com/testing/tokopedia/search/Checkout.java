@@ -6,6 +6,7 @@ import com.testing.constants.AndroidElementConstants;
 import com.testing.constants.ConfigConstants;
 import com.testing.constants.WebElementConstants;
 import com.testing.tokopedia.constants.TokopediaAndroidElementConstants;
+import com.testing.tokopedia.constants.TokopediaWebElementConstants;
 import org.testng.SkipException;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -17,18 +18,19 @@ public class Checkout {
     @Parameters({"platform", "input"})
     public void ChooseCourrier (String platform, @Optional String input) {
 
+        // TODO: Should have pick first row as default
         if (input == null) {
-            input = "testing";
+            input = "GO-JEK";
         }
 
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementByXPath(
                     Handler.GetCurrentAppiumDriver(),
                     AndroidElementConstants.CLASS_ANDROID_WIDGET_TEXTVIEW,
                     AndroidElementConstants.PARAM_TEXT,
-                    "Pilih Kurir");
+                    TokopediaAndroidElementConstants.TEXT_PILIH_KURIR);
 
+            // TODO: Remove the hardcode
             Utility.ClickElementByXPath(
                     Handler.GetCurrentAppiumDriver(),
                     AndroidElementConstants.CLASS_ANDROID_WIDGET_TEXTVIEW,
@@ -39,16 +41,12 @@ public class Checkout {
             Utility.ClickElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,
-                    "toggle-handler");
+                    TokopediaWebElementConstants.CHECKOUT_TOGGLE_HANDLER);
 
             Utility.ClickElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
-                    "data-shipper-name",
-                    "GO-JEK");
-
-            /*Utility.ClickElementById(
-                    Handler.GetCurrentWebDriver(),
-                    "gojek-pinpoint");*/
+                    WebElementConstants.PARAM_DATA_SHIPPER_NAME,
+                    input);
 
         } else {
             throw new SkipException("Platform " + platform + "is not available for test");
@@ -60,24 +58,20 @@ public class Checkout {
     public void Pay (String platform) {
 
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementById (
                     Handler.GetCurrentAppiumDriver(),
-                    "com.tokopedia.tkpd:id/tv_select_payment_method"
+                    TokopediaAndroidElementConstants.ID_TV_SELECT_PAYMENT_METHOD
             );
 
             try {
                 Thread.sleep(5000);
-            } catch (Exception e) {
-
-            }
+            } catch (Exception e) {}
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_CLASS,
-                    "btn proceed-button");
+                    TokopediaWebElementConstants.BUTTON_PROCEED_BUTTON);
 
             try {
                 Thread.sleep(5000);

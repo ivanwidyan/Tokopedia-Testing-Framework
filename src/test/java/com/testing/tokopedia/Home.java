@@ -25,7 +25,6 @@ public class Home {
     @Parameters({"platform", "input"})
     public void Search (String platform, String input) {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementById(
                     Handler.GetCurrentAppiumDriver(),
                     TokopediaAndroidElementConstants.ID_SEARCH_CONTAINER);
@@ -45,7 +44,6 @@ public class Home {
                     TokopediaAndroidElementConstants.ID_TEXT_NEXT);
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             Utility.SendKeysElementByCssSelector(
                     Handler.GetCurrentWebDriver(),
                     WebElementConstants.PARAM_ID,

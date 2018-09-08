@@ -22,14 +22,12 @@ public class Summary {
     @Parameters({"platform"})
     public void Buy (String platform) {
         if (ConfigConstants.PLATFORM_ANDROID.equalsIgnoreCase(platform)) {
-
             Utility.ClickElementById (
                     Handler.GetCurrentAppiumDriver(),
                     TokopediaAndroidElementConstants.ID_CONTAINER_NEW_BUTTON_BUY
             );
 
         } else if (ConfigConstants.PLATFORM_WEB.equalsIgnoreCase(platform)) {
-
             ArrayList<String> tabs = new ArrayList<>(
                     Handler.GetCurrentWebDriver().getWindowHandles());
 

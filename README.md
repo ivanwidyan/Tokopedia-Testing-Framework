@@ -48,6 +48,10 @@ Included in `pom.xml` for maven dependency
 **Home: (Android & Web)**
 * Search
 
+**Login: (Android & Web)**
+* Login
+* Summary Login
+
 **Search: (Android & Web)**
 * Order By
 * Select
@@ -55,9 +59,23 @@ Included in `pom.xml` for maven dependency
 **Summary: (Android & Web)**
 * Buy
 
+**Cart: (Android & Web)**
+* Note
+* Add Quantity
+
+**Checkout: (Android & Web)**
+* Choose Courrier
+* Pay
+
 ### Examples
 **Item Purchase:**
-* Multiplatform Parallel Execution and Multithreading - Test PR_IT_001 & PR_IT_002
+* Automate Test for Web
+[![Web_Automate_Test](https://user-images.githubusercontent.com/12959761/45255714-f292eb00-b3b4-11e8-9291-b150e4fdec79.png)](https://youtu.be/6ToHMlswgPM)
+
+* Automate Test for Android using Jenkins
+[![Android_Jenkins_Test](https://user-images.githubusercontent.com/12959761/45255716-f4f54500-b3b4-11e8-8a5c-de40f233e1db.png)](https://youtu.be/gwZHHKYZqoI)
+
+* Multiplatform Parallel Execution and Multithreading
 [![Parallel_Test](https://user-images.githubusercontent.com/12959761/45136116-de8c9500-b1cc-11e8-91dc-2e5878119488.png)](https://youtu.be/msIWDudQ6Ew)
 
 ### Authors
